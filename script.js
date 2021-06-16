@@ -37,11 +37,16 @@ function update(event) {
     if (event.keyCode == 38 && direction != "down") direction = "up";
     if (event.keyCode == 39 && direction != "left") direction = "right";
     if (event.keyCode == 40 && direction != "up") direction = "down";
-
 }
 
-
 function iniciarJogo() {
+
+    for (let i = 1; i < snake.length; i++) {
+        if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
+            clearInterval(jogo);
+            alert("Game over!");
+        }
+    }
 
     if (snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
     if (snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
